@@ -1,0 +1,11 @@
+{
+  "name": "best-of-farsi",
+  "version": "2.0.0",
+  "repository": "https://github.com/sallar/best-of-farsi.git",
+  "dependencies": {
+    "es6-promise": "^3.0.2",
+    "lodash": "^3.10.1",
+    "mongodb": "^2.0.42",
+    "twit": "^2.1.0"
+  }
+}
