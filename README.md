@@ -15,6 +15,16 @@ To Install, first modify `source/app/config.js` then install dependecies:
     $ sudo npm install -g pm2
     $ npm install
     
+Edit files in `source/data` directory to add banned strings/users and modify allowed Timezones. eg:
+    
+    # source/data/users.json
+    {
+        "banned": [
+            "someUser",
+            "someOtherEvilUser"
+        ]
+    }
+
 Then run the app:
 
     $ cd source/
