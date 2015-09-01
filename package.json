@@ -1,7 +1,16 @@
 {
-  "name": "farsi-favorites",
-  "version": "1.0.0",
-  "repository": "https://github.com/sallar/farsi-favorites.git",
+  "name": "twitter-top-tweets",
+  "version": "1.1.0",
+  "repository": "https://github.com/sallar/top-tweets",
+  "author": {
+    "name": "Sallar Kaboli",
+    "url": "http://sallar.me",
+    "email": "sallar.kaboli@gmail.com"
+  },
+  "license":{
+    "type" : "MIT",
+    "url" : "http://sallar.mit-license.org/"
+  },
   "dependencies": {
     "es6-promise": "^3.0.2",
     "lodash": "^3.10.1",

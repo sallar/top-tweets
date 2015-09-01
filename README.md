@@ -1,6 +1,7 @@
 Twitter Top Tweets
 ===
-A simple Node.js/Express/MongoDB app to retweet best tweets written in a specific language.
+A simple Node.js/Express/MongoDB app to retweet best tweets written in a specific language.  
+[Working Example](https://twitter.com/farsi_favorites) (in Persian).
 
 ## Dependencies
 * NodeJS 
