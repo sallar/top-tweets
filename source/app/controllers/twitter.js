@@ -11,12 +11,12 @@
         database = require('./database'),
         _        = require('lodash');
 
-    /* Instances */
+    /* Create a new instance */
     var twitter = new Twit({
-        consumer_key:         config.consumerKey,
-        consumer_secret:      config.consumerSecret,
-        access_token:         config.accessToken,
-        access_token_secret:  config.accessTokenSecret
+        consumer_key:         config.twitter.consumerKey,
+        consumer_secret:      config.twitter.consumerSecret,
+        access_token:         config.twitter.accessToken,
+        access_token_secret:  config.twitter.accessTokenSecret
     });
 
     /* Private Methods */
@@ -45,7 +45,7 @@
      * @returns {Promise}
      */
     function retweet(statuses) {
-        return new Promise(function(resolve, reject) {
+        return new Promise(function(resolve) {
             var promises = [];
 
             // Check Database
@@ -65,7 +65,7 @@
                     (resolve)(_.sum(data));
                 });
             } else {
-                (reject)('Error in retweeting tweets.');
+                (resolve)(0);
             }
         });
     }

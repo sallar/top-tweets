@@ -8,6 +8,7 @@
     /* Dependencies */
     var MongoClient = require('mongodb').MongoClient,
         _           = require('lodash'),
+        config      = require('../config'),
         _db         = null;
 
     /* Private Methods */
@@ -16,7 +17,7 @@
      */
     function connect() {
         // Connect
-        MongoClient.connect('mongodb://localhost:27017/twitter', function(err, db) {
+        MongoClient.connect(config.db.connection, function(err, db) {
             if(err) {
                 throw new Error("Database connection failed");
             }
@@ -37,7 +38,7 @@
             // Check Database
             statuses.forEach(function(status) {
                 promises.push(new Promise(function(r) {
-                    _db.collection('tweets').count({id_str: status.id_str}, function(err, count) {
+                    _db.collection(config.db.collection).count({id_str: status.id_str}, function(err, count) {
                         (r)({
                             count: count,
                             status: status
@@ -70,7 +71,7 @@
      */
     function insert(status) {
         return new Promise(function(resolve) {
-            _db.collection('tweets').insert(status, function(err, result) {
+            _db.collection(config.db.collection).insert(status, function() {
                 (resolve)();
             });
         });

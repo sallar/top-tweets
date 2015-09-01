@@ -2,7 +2,7 @@
  * @author Sallar Kaboli <sallar.kaboli@gmail.com>
  * @date 8/27/15.
  */
-(function(module) {
+(function() {
     "use strict";
 
     /* Dependencies */
@@ -10,8 +10,7 @@
         twitter   = require('./app/controllers/twitter'),
         filter    = require('./app/controllers/validator'),
         database  = require('./app/controllers/database'),
-        config    = require('./app/config'),
-        path      = require('path');
+        config    = require('./app/config');
 
     /* Instances */
     promise.polyfill();
@@ -20,10 +19,10 @@
     (function search() {
         /* Search Twitter */
         twitter.search({
-            q                : '%20',
-            lang             : 'fa',
-            count            : 100,
-            result_type      : 'mixed',
+            q                : config.search.query,
+            lang             : config.search.lang,
+            count            : config.search.count,
+            result_type      : config.search.type,
             include_entities : false
         })
             /* Filter Tweets Array */
@@ -43,4 +42,4 @@
                 setTimeout(search, config.interval);
             });
     })();
-})(module);
+})();

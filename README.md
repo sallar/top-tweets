@@ -1,21 +1,20 @@
-Farsi Favorites
+Twitter Top Tweets
 ===
-A simple Node.js app that fetches top Persian tweets on twitter and retweets them.
+A simple Node.js/Express/MongoDB app to retweet best tweets written in a specific language.
 
-## Install & Run
-Install dependencies:
-
-    $ npm install
-Install PM2 globally on your machine:
+## Install
+To Install, first modify `source/app/config.js` then install dependecies:
 
     $ sudo npm install -g pm2
-Run the app with pm2
+    $ npm install
+    
+Then run the app:
 
     $ cd source/
     $ pm2 start search
 
-## Test
-To be written.
+## Tests
+To be added.
 
 ## License
 This software is released under the [MIT License](http://sallar.mit-license.org/).  
