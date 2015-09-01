@@ -11,24 +11,27 @@ A simple Node.js/Express/MongoDB app to retweet best tweets written in a specifi
 
 ## Install
 To Install, first modify `source/app/config.js` then install dependecies:
+```bash
+$ sudo npm install -g pm2
+$ npm install
+```
 
-    $ sudo npm install -g pm2
-    $ npm install
-    
 Edit files in `source/data` directory to add banned strings/users and modify allowed Timezones. eg:
-    
-    # source/data/users.json
-    {
-        "banned": [
-            "someUser",
-            "someOtherEvilUser"
-        ]
-    }
+```json
+# source/data/users.json
+{
+    "banned": [
+        "someUser",
+        "someOtherEvilUser"
+    ]
+}
+```
 
 Then run the app:
-
-    $ cd source/
-    $ pm2 start search
+```bash
+$ cd source/
+$ pm2 start search
+```
 
 ## Tests
 To be added.
