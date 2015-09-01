@@ -2,6 +2,12 @@ Twitter Top Tweets
 ===
 A simple Node.js/Express/MongoDB app to retweet best tweets written in a specific language.
 
+## Dependencies
+* NodeJS 
+* MongoDB
+* PM2 (from npm)
+* Twitter Dev Credentials
+
 ## Install
 To Install, first modify `source/app/config.js` then install dependecies:
 
