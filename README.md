@@ -1,7 +1,9 @@
 Twitter Top Tweets
 ===
 A simple Node.js/Express/MongoDB app to retweet best tweets written in a specific language.  
-[Working Example](https://twitter.com/farsi_favorites) (in Persian).
+This app makes use of `cld` for language detection since Twitter’s language detection is not
+trustable and is based on “Best Effort”.  
+[Working Example](https://twitter.com/farsi_favorites) (in Persian).  
 
 ## Dependencies
 * NodeJS 
@@ -10,24 +12,30 @@ A simple Node.js/Express/MongoDB app to retweet best tweets written in a specifi
 * Twitter Dev Credentials
 
 ## Install
-To Install, first modify `source/app/config.js` then install dependecies:
+### Install dependecies:
 ```bash
 $ sudo npm install -g pm2
 $ npm install
 ```
 
-Edit files in `source/data` directory to add banned strings/users and modify allowed Timezones. eg:
+### Modify Config
+Modify config file in `source/app/config.js` and add your Twitter credentials. 
+
+### Add Data Files
+Add to files to data directory: `strings.json` and `users.json` both based on this structure:
 ```json
-# source/data/users.json
 {
     "banned": [
         "someUser",
-        "someOtherEvilUser"
+        "someOtherEvilUser",
+        "..."
     ]
 }
 ```
+Items in `strings.json` file are only matched in tweet text, but items in `users.json` file are 
+matched both in tweet text and user’s screen name. (Dont include `@` in screen names).
 
-Then run the app:
+### Run
 ```bash
 $ cd source/
 $ pm2 start search
