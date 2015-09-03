@@ -27,9 +27,9 @@ module.exports = {
 
     // Limitations
     minRetweetCount : 10,
-    timezonesFile   : 'data/timezones.json',
     usersFile       : 'data/users.json',
     stringsFile     : 'data/strings.json',
+    secondaryCheck  : true,
 
     // Others
     filterKeys : ['id', 'id_str', 'text', 'retweet_count'],

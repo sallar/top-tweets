@@ -1,6 +1,6 @@
 {
   "name": "twitter-top-tweets",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "repository": "https://github.com/sallar/top-tweets",
   "author": {
     "name": "Sallar Kaboli",
@@ -15,6 +15,7 @@
     "es6-promise": "^3.0.2",
     "lodash": "^3.10.1",
     "mongodb": "^2.0.42",
-    "twit": "^2.1.0"
+    "twit": "^2.1.0",
+    "cld": "^2.4.4"
   }
 }
