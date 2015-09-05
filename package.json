@@ -14,6 +14,9 @@
     "type": "MIT",
     "url": "http://sallar.mit-license.org/"
   },
+  "engines": {
+    "node": "0.12.x"
+  },
   "dependencies": {
     "cld": "^2.4.4",
     "es6-promise": "^3.0.2",
