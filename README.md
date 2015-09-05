@@ -1,4 +1,4 @@
-Twitter Top Tweets
+Twitter Top Tweets [![Build Status](https://travis-ci.org/sallar/top-tweets.svg?branch=master)](https://travis-ci.org/sallar/top-tweets)
 ===
 A simple Node.js/Express/MongoDB app to retweet best tweets written in a specific language.  
 This app makes use of `cld` for language detection since Twitter’s language detection is not
