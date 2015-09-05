@@ -26,7 +26,7 @@
             include_entities : true
         })
             /* Filter Tweets Array */
-            .then(filter)
+            .then(filter.tweets)
             /* Check Database for Duplicates */
             .then(database.check)
             /* Retweet on Twitter */

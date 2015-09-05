@@ -9,12 +9,14 @@ trustable and is based on “Best Effort”.
 * NodeJS 
 * MongoDB
 * PM2 (from npm)
+* Mocha (from npm)
 * Twitter Dev Credentials
 
 ## Install
 ### Install dependecies:
 ```bash
 $ sudo npm install -g pm2
+$ sudo npm install -g mocha
 $ npm install
 ```
 
@@ -42,7 +44,10 @@ $ pm2 start search
 ```
 
 ## Tests
-To be added.
+To run tests:
+```bash
+npm test
+```
 
 ## License
 This software is released under the [MIT License](http://sallar.mit-license.org/).  

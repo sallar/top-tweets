@@ -133,6 +133,7 @@
         return new Promise(function(resolve) {
             resolve(statuses.filter(function(status) {
                 var len  = strings.banned.length,
+                    // TODO: Remove this line and move to another file (quick fix for Farsi)
                     text = persianJs(status.text.toLowerCase()).arabicChar().value(),
                     reg;
 
@@ -183,23 +184,30 @@
     /**
      * Detect Languages with Cld
      * @param status
+     * @param language
+     * @param languageHint
      * @returns {Promise}
      */
-    function detector(status) {
+    function detector(status, language, languageHint) {
+        // Language
+        language = language || config.search.lang;
+
         // Detection options
         var options = {
             isHTML       : false,
-            httpHint     : config.search.lang
+            httpHint     : language,
+            languageHint : languageHint
         };
 
         // Return a promise
         return new Promise(function(resolve) {
             // Only run the detection if it’s enabled.
             if(config.secondaryCheck === true) {
-                cld.detect(status.text, options, function (err, result) {
+                cld.detect(status.text, options, function(err, result) {
                     if(
                         !err &&
-                        result.languages[0].code === config.search.lang &&
+                        result.languages[0].code === language &&
+                        result.languages[0].score >= config.langThreshold &&
                         result.reliable === true
                     ) {
                         resolve(status);
@@ -214,5 +222,19 @@
     }
 
     /* Public Methods */
-    module.exports = filter;
+    module.exports = {
+        // Only following is needed
+        tweets: filter,
+
+        // Following methods are added to public interface
+        // for testing purposes
+        retweeted: filterRetweeted,
+        original: filterMainTweets,
+        duplicates: filterDuplicates,
+        languages: filterLanguages,
+        users: filterUsers,
+        strings: filterStrings,
+        keys: filterKeys,
+        detector: detector
+    };
 })(module);

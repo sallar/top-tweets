@@ -2,6 +2,9 @@
   "name": "twitter-top-tweets",
   "version": "1.2.0",
   "repository": "https://github.com/sallar/top-tweets",
+  "scripts": {
+    "test": "mocha"
+  },
   "author": {
     "name": "Sallar Kaboli",
     "url": "http://sallar.me",

@@ -30,8 +30,9 @@ module.exports = {
     usersFile       : 'data/users.json',
     stringsFile     : 'data/strings.json',
     secondaryCheck  : true,
+    langThreshold   : 470,
 
     // Others
     filterKeys : ['id', 'id_str', 'text', 'retweet_count'],
-    interval   : 60000
+    interval   : 120000
 };
