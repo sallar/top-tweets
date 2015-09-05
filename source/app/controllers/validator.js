@@ -83,7 +83,9 @@
     function filterLanguages(statuses) {
         return new Promise(function(resolve) {
             // Map statuses to a detector Promise
-            statuses = statuses.map(detector);
+            statuses = statuses.map(function(status) {
+                return detector(status);
+            });
 
             // Wait for all promises to be completed
             Promise.all(statuses).then(function(data) {
