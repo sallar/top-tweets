@@ -19,6 +19,16 @@ module.exports = {
         type  : 'mixed'
     },
 
+    // Languages Settings
+    languages: {
+        fa: {
+            hint: 'PERSIAN'
+        },
+        ar: {
+            hint: 'ARABIC'
+        }
+    },
+
     // MongoDB Settings
     db: {
         connection: 'mongodb://localhost:27017/twitter',

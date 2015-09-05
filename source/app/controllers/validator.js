@@ -190,7 +190,8 @@
      */
     function detector(status, language, languageHint) {
         // Language
-        language = language || config.search.lang;
+        language     = language || config.search.lang;
+        languageHint = languageHint || config.languages[language].hint;
 
         // Detection options
         var options = {
