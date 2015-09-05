@@ -23,7 +23,7 @@
             lang             : config.search.lang,
             count            : config.search.count,
             result_type      : config.search.type,
-            include_entities : false
+            include_entities : true
         })
             /* Filter Tweets Array */
             .then(filter)

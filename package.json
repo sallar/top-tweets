@@ -7,15 +7,16 @@
     "url": "http://sallar.me",
     "email": "sallar.kaboli@gmail.com"
   },
-  "license":{
-    "type" : "MIT",
-    "url" : "http://sallar.mit-license.org/"
+  "license": {
+    "type": "MIT",
+    "url": "http://sallar.mit-license.org/"
   },
   "dependencies": {
+    "cld": "^2.4.4",
     "es6-promise": "^3.0.2",
     "lodash": "^3.10.1",
     "mongodb": "^2.0.42",
-    "twit": "^2.1.0",
-    "cld": "^2.4.4"
+    "persianjs": "^0.3.0",
+    "twit": "^2.1.0"
   }
 }

@@ -9,6 +9,7 @@
     var path      = require('path'),
         _         = require('lodash'),
         cld       = require('cld'),
+        persianJs = require('persianjs'),
         APP_PATH  = path.resolve(__dirname, '../../'),
         config    = require('../config'),
         users     = require(APP_PATH + '/' + config.usersFile),
@@ -24,6 +25,8 @@
         // Return a new promise
         return new Promise(function(resolve) {
             filterRetweeted(statuses)   // Filter out low retweet counts
+                .then(filterMainTweets) // Choose main tweets
+                .then(filterDuplicates) // Remove duplicates
                 .then(filterLanguages)  // Make sure the language is correct
                 .then(filterUsers)      // Filter out banned users
                 .then(filterStrings)    // Filter out banned strings
@@ -42,6 +45,33 @@
             resolve(statuses.filter(function(status) {
                 return (status.retweeted === false && status.retweet_count >= config.minRetweetCount);
             }));
+        });
+    }
+
+    /**
+     * Choose the main tweet if its available
+     * @param statuses
+     * @returns {Promise}
+     */
+    function filterMainTweets(statuses) {
+        return new Promise(function(resolve) {
+            resolve(statuses.map(function(status) {
+                if('retweeted_status' in status) {
+                    return status.retweeted_status;
+                }
+                return status;
+            }));
+        });
+    }
+
+    /**
+     * Filter duplicates
+     * @param statuses
+     * @returns {Promise}
+     */
+    function filterDuplicates(statuses) {
+        return new Promise(function(resolve) {
+            resolve(_.uniq(statuses, 'id_str'));
         });
     }
 
@@ -103,7 +133,7 @@
         return new Promise(function(resolve) {
             resolve(statuses.filter(function(status) {
                 var len  = strings.banned.length,
-                    text = status.text.toLowerCase(),
+                    text = persianJs(status.text.toLowerCase()).arabicChar().value(),
                     reg;
 
                 // Check if id_str or name are banned
@@ -167,7 +197,11 @@
             // Only run the detection if it’s enabled.
             if(config.secondaryCheck === true) {
                 cld.detect(status.text, options, function (err, result) {
-                    if(!err && result.languages[0].code === config.search.lang) {
+                    if(
+                        !err &&
+                        result.languages[0].code === config.search.lang &&
+                        result.reliable === true
+                    ) {
                         resolve(status);
                     } else {
                         resolve(null);
