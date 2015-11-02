@@ -105,17 +105,19 @@
     function filterUsers(statuses) {
         return new Promise(function(resolve) {
             resolve(statuses.filter(function(status) {
-                var len  = users.banned.length,
-                    name = status.user.screen_name.toLowerCase(),
+                var len = users.banned.length,
+                    screenName = status.user.screen_name.toLowerCase(),
+                    name = status.user.name.toLowerCase(),
                     reg, curr;
 
                 // Check if id_str or name are banned
                 for(var i = 0; i < len; i += 1) {
-                    curr = users.banned[i].toLowerCase(); // Current name
-                    reg  = new RegExp('@' + curr, 'i');   // Current name as RegExp
+                    // Current name as RegExp
+                    curr = users.banned[i].toLowerCase();
+                    reg  = new RegExp(curr, 'i');
 
                     // If matched, then filter it out.
-                    if(curr === name || reg.test(status.text)) {
+                    if(reg.test(name) || reg.test(screenName)) {
                         return false;
                     }
                 }
@@ -141,7 +143,8 @@
 
                 // Check if id_str or name are banned
                 for(var i = 0; i < len; i += 1) {
-                    reg  = new RegExp(strings.banned[i].toLowerCase(), 'i'); // Current string as RegExp
+                    // Current string as RegExp
+                    reg = new RegExp(strings.banned[i].toLowerCase(), 'i');
 
                     // If matched, then filter it out.
                     if(reg.test(text)) {
